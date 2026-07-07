@@ -72,6 +72,7 @@ Target length: under 3 minutes.
 - Video length target: `<= 3:00`
 - Demonstration device: Desktop browser
 - Script language: English
+- Upload packet: `docs/demo-video-upload-packet.md`
 
 ## Alibaba Cloud Proof Link
 
@@ -88,6 +89,10 @@ Use:
 ## Public Video Proof
 
 - Short proof clip URL (separate from main demo, if available): `https://...`
+
+## Optional Blog/Social Post
+
+Draft: `docs/qwencloud-build-journey-post.md`
 
 ## Repository Checklist
 

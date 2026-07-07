@@ -13,6 +13,8 @@ Run this in the last 5 minutes before submission.
    - `deploy/alibaba/serverless-devs.yaml` (deployment proof link)
    - `docs/architecture.svg` and `docs/architecture.md` (architecture diagram)
    - demo video URL (YouTube/Vimeo/Youku, <=3:00)
+   - demo upload notes: `docs/demo-video-upload-packet.md`
+   - optional blog/social draft: `docs/qwencloud-build-journey-post.md`
 3. Confirm local/run-time proof:
    - `/api/health` works on backend URL
    - proof response includes:

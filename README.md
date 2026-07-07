@@ -130,6 +130,7 @@ Required files:
 - [`Dockerfile`](Dockerfile)
 - [`deploy/alibaba/serverless-devs.yaml`](deploy/alibaba/serverless-devs.yaml)
 - [`docs/deployment/alibaba-cloud.md`](docs/deployment/alibaba-cloud.md)
+- [`docs/demo-video-upload-packet.md`](docs/demo-video-upload-packet.md)
 
 Preflight:
 
