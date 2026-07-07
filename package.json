@@ -1,0 +1,46 @@
+{
+  "name": "qwen-ci-autopilot",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "concurrently -n api,web -c teal,amber \"npm:dev:server\" \"npm:dev:web\"",
+    "dev:web": "vite --host 127.0.0.1",
+    "dev:server": "tsx watch server/index.ts",
+    "hackathon:audit": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/qwencloud-hackathon-audit.ps1 -BaseUrl http://127.0.0.1:8787",
+    "hackathon:proof": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/qwencloud-hackathon-proof.ps1 -BaseUrl http://127.0.0.1:8787",
+    "hackathon:submit-gate": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/qwencloud-hackathon-submit-gate.ps1",
+    "hackathon:submission-packet": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/qwencloud-hackathon-submission-packet.ps1",
+    "hackathon:verify": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/qwencloud-hackathon-verify.ps1 -BaseUrl http://127.0.0.1:8787",
+    "build": "tsc -b && vite build && tsc -p tsconfig.server.json",
+    "lint": "oxlint",
+    "preview": "vite preview --host 127.0.0.1",
+    "start": "node dist-server/index.js",
+    "test": "vitest run src server"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "lucide-react": "^1.23.0",
+    "openai": "^6.45.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^24.13.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "concurrently": "^10.0.3",
+    "oxlint": "^1.71.0",
+    "tsx": "^4.23.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.1.1",
+    "vitest": "^4.1.10"
+  }
+}

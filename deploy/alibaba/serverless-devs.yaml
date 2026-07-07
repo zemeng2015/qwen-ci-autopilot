@@ -1,0 +1,48 @@
+edition: 3.0.0
+name: qwen-ci-autopilot
+access: default
+
+vars:
+  region: ${env(ALIBABA_CLOUD_REGION)}
+  functionName: ${env(ALIBABA_CLOUD_SERVICE)}
+  image: ${env(ACR_IMAGE)}
+
+resources:
+  qwen-ci-autopilot-api:
+    component: fc3
+    props:
+      region: ${vars.region}
+      functionName: ${vars.functionName}
+      description: Qwen CI Autopilot hackathon backend
+      runtime: custom-container
+      cpu: 1
+      memorySize: 1024
+      diskSize: 512
+      timeout: 120
+      instanceConcurrency: 10
+      customContainerConfig:
+        image: ${vars.image}
+        command:
+          - node
+        args:
+          - dist-server/index.js
+        port: 8787
+      environmentVariables:
+        NODE_ENV: production
+        PORT: "8787"
+        DASHSCOPE_API_KEY: ${env(DASHSCOPE_API_KEY)}
+        QWEN_BASE_URL: ${env(QWEN_BASE_URL)}
+        QWEN_MODEL: ${env(QWEN_MODEL)}
+        ALIBABA_CLOUD_REGION: ${vars.region}
+        ALIBABA_CLOUD_SERVICE: ${vars.functionName}
+      triggers:
+        - triggerName: httpTrigger
+          triggerType: http
+          description: Public HTTP endpoint for Devpost judging
+          qualifier: LATEST
+          triggerConfig:
+            authType: anonymous
+            methods:
+              - GET
+              - POST
+              - OPTIONS

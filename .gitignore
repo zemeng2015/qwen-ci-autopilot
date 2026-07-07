@@ -1,0 +1,52 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-server
+dist-ssr
+*.local
+.env
+.env.*
+!.env.example
+playwright-report
+test-results
+screenshots
+.codex-dev.*.log
+artifacts/qwencloud-proof/*
+!artifacts/qwencloud-proof/.gitkeep
+
+# Sibling project folders that are present in this workspace but not part of
+# the Qwen CI Autopilot submission.
+kaya-ai-iit-hackathon-2026/
+ledgerflow-neurox/
+merge-sentinel/
+official-phaser-template/
+reddit-games-threadline/
+
+# Old template files left by earlier synced projects.
+src/studyEngine.ts
+src/studyEngine.test.ts
+src/assets/hero.png
+src/assets/react.svg
+src/assets/vite.svg
+docs/assets/studylift-ai-concept.png
+docs/ml-empowerment-brief.md
+docs/studylift-devpost-submission.md
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

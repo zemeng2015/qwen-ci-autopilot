@@ -1,0 +1,10 @@
+node_modules
+dist
+dist-server
+.git
+.env
+.env.*
+screenshots
+playwright-report
+test-results
+npm-debug.log*

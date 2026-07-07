@@ -1,0 +1,10 @@
+{
+  "status": "sample",
+  "commands": [
+    "npm run test",
+    "npm run build",
+    "curl $ALIBABA_BACKEND_URL/api/health"
+  ],
+  "humanCheckpoint": true,
+  "qwenModel": "qwen3.7-plus"
+}
