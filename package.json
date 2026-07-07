@@ -8,6 +8,7 @@
     "dev": "concurrently -n api,web -c teal,amber \"npm:dev:server\" \"npm:dev:web\"",
     "dev:web": "vite --host 127.0.0.1",
     "dev:server": "tsx watch server/index.ts",
+    "deploy:preflight": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/qwencloud-deploy-preflight.ps1",
     "hackathon:audit": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/qwencloud-hackathon-audit.ps1 -BaseUrl http://127.0.0.1:8787",
     "hackathon:proof": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/qwencloud-hackathon-proof.ps1 -BaseUrl http://127.0.0.1:8787",
     "hackathon:submit-gate": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/qwencloud-hackathon-submit-gate.ps1",

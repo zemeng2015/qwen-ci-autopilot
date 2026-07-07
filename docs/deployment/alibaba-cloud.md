@@ -11,6 +11,18 @@ prepared for Alibaba Cloud Function Compute using a custom container.
 
 ## Build Container
 
+Run the deploy preflight first:
+
+```powershell
+npm run deploy:preflight
+```
+
+To also verify the local Docker image build path:
+
+```powershell
+npm run deploy:preflight -- -BuildImage -ImageTag qwen-ci-autopilot:local
+```
+
 ```powershell
 docker build -t qwen-ci-autopilot:latest .
 ```
@@ -23,7 +35,14 @@ $env:ACR_IMAGE="registry-intl.us-east-1.aliyuncs.com/<namespace>/qwen-ci-autopil
 
 ## Deploy With Serverless Devs
 
-Install and configure Serverless Devs with an Alibaba Cloud access profile, then:
+Install and configure Serverless Devs with an Alibaba Cloud access profile:
+
+```powershell
+npm install -g @serverless-devs/s
+s config add
+```
+
+Then deploy:
 
 ```powershell
 cd deploy/alibaba

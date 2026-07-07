@@ -3,6 +3,7 @@
 Use this before uploading final demo links.
 
 1. Backend live endpoint
+   - Run `npm run deploy:preflight` before deploying.
    - Open backend URL from Alibaba Cloud Function Compute.
    - Confirm `GET /api/health` returns HTTP 200 and JSON body.
 2. Health checks to verify

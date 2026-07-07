@@ -124,6 +124,18 @@ Required files:
 - [`deploy/alibaba/serverless-devs.yaml`](deploy/alibaba/serverless-devs.yaml)
 - [`docs/deployment/alibaba-cloud.md`](docs/deployment/alibaba-cloud.md)
 
+Preflight:
+
+```powershell
+npm run deploy:preflight
+```
+
+Use this before a real deployment:
+
+```powershell
+npm run deploy:preflight -- -BuildImage -ImageTag qwen-ci-autopilot:local
+```
+
 After deployment, record a short proof clip that shows:
 
 1. The Alibaba Cloud Function Compute service.
