@@ -101,6 +101,7 @@ npm run hackathon:audit
 Optional:
 
 ```powershell
+npm run demo:render
 npm run hackathon:verify
 npm run hackathon:proof
 npm run hackathon:submit-gate
@@ -164,6 +165,10 @@ Look in `artifacts/qwencloud-proof/` for:
 - `submission-audit-*.json` (final status report)
 - `submission-proof-*.json` / `.md` (deployment proof snapshot)
 - `submission-gate-*.json` / `.md` (file + repo checks)
+
+Look in `artifacts/demo/` for:
+
+- `qwen-ci-autopilot-devpost-final.mp4` (rendered demo upload file)
 
 ## References
 

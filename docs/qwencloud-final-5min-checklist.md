@@ -31,13 +31,19 @@ Run this in the last 5 minutes before submission.
    ```powershell
    npm run hackathon:audit
    ```
-5. Execute container smoke if Docker is running:
+5. Render or verify the final Devpost video:
+   ```powershell
+   npm run demo:render
+   ```
+   Confirm `artifacts/demo/qwen-ci-autopilot-devpost-final.mp4` is under 3
+   minutes before upload.
+6. Execute container smoke if Docker is running:
    ```powershell
    npm run deploy:preflight -- -BuildImage -SmokeContainer -ImageTag qwen-ci-autopilot:local
    ```
-6. Generate submission packet with your real links:
+7. Generate submission packet with your real links:
    ```powershell
    npm run hackathon:submission-packet -- -RepoUrl "https://github.com/zemeng2015/qwen-ci-autopilot" -DemoVideoUrl "https://www.youtube.com/..."
    ```
-7. Open packet output and copy ready-to-paste Devpost fields to the form.
-8. Re-check Devpost required fields and submit.
+8. Open packet output and copy ready-to-paste Devpost fields to the form.
+9. Re-check Devpost required fields and submit.

@@ -4,14 +4,21 @@ Use this for the public YouTube, Vimeo, or Youku upload required by Devpost.
 
 ## Local video file
 
-`artifacts/demo/qwen-ci-autopilot-demo-local-paced.mp4`
+`artifacts/demo/qwen-ci-autopilot-devpost-final.mp4`
 
 Generated local proof:
 
-- Length: about 29 seconds
+- Length: about 41 seconds
 - Format: MP4 / H.264
-- Captured flow: dashboard, demo autopilot run, production-risk approval gate,
-  checkpoint approval, `/api/health` deployment metadata
+- Rendered with title card, captions, proof outro, dashboard flow, demo
+  autopilot run, production-risk approval gate, checkpoint approval, and
+  `/api/health` deployment metadata
+
+Render command:
+
+```powershell
+npm run demo:render
+```
 
 ## Suggested title
 
@@ -64,7 +71,8 @@ architecture documentation for judges.
 
 ## Upload checklist
 
-- [ ] Upload `artifacts/demo/qwen-ci-autopilot-demo-local-paced.mp4`.
+- [ ] Run `npm run demo:render`.
+- [ ] Upload `artifacts/demo/qwen-ci-autopilot-devpost-final.mp4`.
 - [ ] Set visibility to public or unlisted-but-accessible if the platform allows
   Devpost judging access. Public is safest.
 - [ ] Confirm duration is under 3 minutes.
