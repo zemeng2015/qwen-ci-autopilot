@@ -18,7 +18,7 @@ Qwen CI Autopilot is a production-minded agentic workflow that turns ambiguous e
 - Evidence artifacts: patch intent, remediation plan, verification evidence, and deployment proof.
 
 **Repository (public GitHub repo)**  
-`[ADD_PUBLIC_GITHUB_REPO_URL]`
+https://github.com/zemeng2015/qwen-ci-autopilot
 
 **Demo video**  
 `[ADD_PUBLIC_3MIN_OR_SHORTER_VIDEO_URL]`
@@ -41,7 +41,7 @@ npm run hackathon:audit
 ```
 
 **Submission checklist before final click**  
-- [ ] Repo is public (GitHub) and contains LICENSE.  
+- [x] Repo is public (GitHub) and contains LICENSE.  
 - [ ] Video is public on YouTube / Vimeo / Youku and **< 3:00**.  
 - [ ] Track set to `Track 4: Autopilot Agent`.  
 - [ ] Health endpoint proof is working in deployed environment.  

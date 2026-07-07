@@ -3,7 +3,7 @@
 Run this in the last 5 minutes before submission.
 
 1. Confirm codebase requirements in Devpost form:
-   - Public repository URL
+   - Public repository URL: `https://github.com/zemeng2015/qwen-ci-autopilot`
    - Project description
    - Track = `Track 4: Autopilot Agent`
    - Text explanation of workflow and impact
@@ -26,7 +26,7 @@ Run this in the last 5 minutes before submission.
    ```
 5. Generate submission packet with your real links:
    ```powershell
-   npm run hackathon:submission-packet -- -RepoUrl "https://github.com/<you>/<repo>" -DemoVideoUrl "https://www.youtube.com/..."
+   npm run hackathon:submission-packet -- -RepoUrl "https://github.com/zemeng2015/qwen-ci-autopilot" -DemoVideoUrl "https://www.youtube.com/..."
    ```
 6. Open packet output and copy ready-to-paste Devpost fields to the form.
 7. Re-check Devpost required fields and submit.

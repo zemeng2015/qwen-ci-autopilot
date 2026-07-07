@@ -32,7 +32,7 @@ Generate the final Devpost packet after the public repo and video URLs exist:
 
 ```powershell
 npm run hackathon:submission-packet -- `
-  -RepoUrl "https://github.com/<you>/<repo>" `
+  -RepoUrl "https://github.com/zemeng2015/qwen-ci-autopilot" `
   -DemoVideoUrl "https://www.youtube.com/..." `
   -BackendUrl "https://<your-alibaba-backend>"
 ```

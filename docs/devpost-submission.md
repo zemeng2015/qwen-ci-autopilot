@@ -103,6 +103,10 @@ Use:
 - [ ] Separate Alibaba Cloud proof recording URL
 - [ ] Finalized testing instructions
 
+## Public Repository
+
+https://github.com/zemeng2015/qwen-ci-autopilot
+
 ## Ready-to-run one-liner
 
 Before final submit, generate everything you need to paste into Devpost:
