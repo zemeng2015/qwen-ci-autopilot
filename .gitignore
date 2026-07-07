@@ -21,6 +21,8 @@ screenshots
 .codex-dev.*.log
 artifacts/qwencloud-proof/*
 !artifacts/qwencloud-proof/.gitkeep
+artifacts/demo/*
+!artifacts/demo/.gitkeep
 
 # Sibling project folders that are present in this workspace but not part of
 # the Qwen CI Autopilot submission.
