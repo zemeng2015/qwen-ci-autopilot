@@ -49,12 +49,25 @@ cd deploy/alibaba
 s deploy
 ```
 
+Or use the release helper from the repository root:
+
+```powershell
+npm run deploy:alibaba
+```
+
+The helper runs local preflight, Docker build, container smoke, image tag/push,
+and `s deploy`, then writes `artifacts/qwencloud-proof/alibaba-release-*.json`
+and `.md`.
+
 Required environment variables:
 
 ```powershell
 $env:DASHSCOPE_API_KEY="sk-your-qwen-cloud-key"
 $env:ALIBABA_CLOUD_REGION="us-east-1"
 $env:ALIBABA_CLOUD_SERVICE="qwen-ci-autopilot-api"
+$env:ACR_IMAGE="registry-intl.us-east-1.aliyuncs.com/<namespace>/qwen-ci-autopilot:latest"
+$env:QWEN_BASE_URL="https://dashscope-intl.aliyuncs.com/compatible-mode/v1"
+$env:QWEN_MODEL="qwen3.7-plus"
 ```
 
 ## Proof Recording Checklist

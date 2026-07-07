@@ -23,6 +23,10 @@ Run this in the last 5 minutes before submission.
      - `region`
      - `qwen.model`
      - `proofFile`
+   - Alibaba release helper ran successfully if using this repo flow:
+     ```powershell
+     npm run deploy:alibaba
+     ```
 4. Execute audit command and attach outputs:
    ```powershell
    npm run hackathon:audit

@@ -14,6 +14,7 @@ npm run test
 npm run build
 npm run deploy:preflight
 npm run deploy:preflight -- -BuildImage -SmokeContainer -ImageTag qwen-ci-autopilot:local
+npm run deploy:alibaba
 npm run hackathon:verify
 ```
 

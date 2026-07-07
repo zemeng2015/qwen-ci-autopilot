@@ -17,12 +17,11 @@ export interface QwenStageResult {
 }
 
 export function getQwenSettings(): QwenSettings {
-  const apiKey = process.env.DASHSCOPE_API_KEY ?? process.env.QWEN_API_KEY
+  const apiKey = firstNonBlank(process.env.DASHSCOPE_API_KEY, process.env.QWEN_API_KEY)
   const baseUrl =
-    process.env.QWEN_BASE_URL ??
-    process.env.DASHSCOPE_BASE_URL ??
+    firstNonBlank(process.env.QWEN_BASE_URL, process.env.DASHSCOPE_BASE_URL) ??
     'https://dashscope-intl.aliyuncs.com/compatible-mode/v1'
-  const model = process.env.QWEN_MODEL ?? 'qwen3.7-plus'
+  const model = firstNonBlank(process.env.QWEN_MODEL) ?? 'qwen3.7-plus'
 
   return {
     apiKey,
@@ -30,6 +29,10 @@ export function getQwenSettings(): QwenSettings {
     model,
     liveReady: Boolean(apiKey),
   }
+}
+
+function firstNonBlank(...values: Array<string | undefined>): string | undefined {
+  return values.find((value) => value && value.trim().length > 0)
 }
 
 export async function askQwenStage(

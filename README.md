@@ -144,6 +144,13 @@ Use this before a real deployment:
 npm run deploy:preflight -- -BuildImage -SmokeContainer -ImageTag qwen-ci-autopilot:local
 ```
 
+Release to Alibaba Cloud after configuring `s config add`, `DASHSCOPE_API_KEY`,
+`ALIBABA_CLOUD_REGION`, `ALIBABA_CLOUD_SERVICE`, and `ACR_IMAGE`:
+
+```powershell
+npm run deploy:alibaba
+```
+
 After deployment, record a short proof clip that shows:
 
 1. The Alibaba Cloud Function Compute service.

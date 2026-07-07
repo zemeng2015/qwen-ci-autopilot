@@ -194,6 +194,8 @@ $mdLines += @(
     '# docker tag/push to $env:ACR_IMAGE after logging into Alibaba Cloud Container Registry',
     "cd deploy/alibaba",
     "s deploy",
+    "cd ../..",
+    "npm run deploy:alibaba",
     '```'
 )
 

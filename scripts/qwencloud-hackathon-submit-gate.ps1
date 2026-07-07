@@ -23,6 +23,7 @@ $requiredPaths = @(
     "docs/architecture.svg",
     "docs/deployment/alibaba-cloud.md",
     "deploy/alibaba/serverless-devs.yaml",
+    "scripts/qwencloud-alibaba-release.ps1",
     "scripts/qwencloud-deploy-preflight.ps1",
     "scripts/qwencloud-hackathon-audit.ps1",
     "scripts/qwencloud-hackathon-proof.ps1",
