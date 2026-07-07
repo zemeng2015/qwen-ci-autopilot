@@ -4,6 +4,7 @@ Run this in the last 5 minutes before submission.
 
 1. Confirm codebase requirements in Devpost form:
    - Public repository URL: `https://github.com/zemeng2015/qwen-ci-autopilot`
+   - CI proof URL: `https://github.com/zemeng2015/qwen-ci-autopilot/actions/workflows/ci.yml`
    - Project description
    - Track = `Track 4: Autopilot Agent`
    - Text explanation of workflow and impact

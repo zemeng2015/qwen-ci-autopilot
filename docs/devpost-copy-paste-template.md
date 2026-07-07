@@ -34,6 +34,7 @@ https://github.com/zemeng2015/qwen-ci-autopilot
 - Architecture diagram: `docs/architecture.svg`  
 - Architecture doc: `docs/architecture.md`  
 - Deployment proof file: `deploy/alibaba/serverless-devs.yaml`
+- CI proof: https://github.com/zemeng2015/qwen-ci-autopilot/actions/workflows/ci.yml
 
 **Judging test command (optional to paste in description)**  
 ```bash

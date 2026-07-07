@@ -107,6 +107,10 @@ Use:
 
 https://github.com/zemeng2015/qwen-ci-autopilot
 
+## Reproducible CI Proof
+
+https://github.com/zemeng2015/qwen-ci-autopilot/actions/workflows/ci.yml
+
 ## Ready-to-run one-liner
 
 Before final submit, generate everything you need to paste into Devpost:

@@ -1,5 +1,7 @@
 # Qwen CI Autopilot
 
+[![ci](https://github.com/zemeng2015/qwen-ci-autopilot/actions/workflows/ci.yml/badge.svg)](https://github.com/zemeng2015/qwen-ci-autopilot/actions/workflows/ci.yml)
+
 Qwen CI Autopilot is a production-minded Track 4: Autopilot Agent project for the
 Qwen Cloud hackathon. It turns ambiguous CI failures, coverage gates, and
 production alerts into a staged remediation workflow with local evidence, optional
@@ -9,6 +11,7 @@ The app is built to match Devpost requirements:
 
 - Qwen Cloud integration (`qwen3.7-plus`).
 - Public, open-source repository baseline.
+- Reproducible GitHub Actions verification.
 - Alibaba Cloud deployment proof.
 - Architecture diagram.
 - <=3 minute demonstration-ready behavior.
@@ -77,6 +80,10 @@ Open frontend at the Vite URL (usually `http://127.0.0.1:5173`) and API at
 npm run test
 npm run build
 ```
+
+CI proof:
+
+https://github.com/zemeng2015/qwen-ci-autopilot/actions/workflows/ci.yml
 
 Useful API checks:
 
