@@ -13,6 +13,7 @@ Qwen CI Autopilot is a production-minded agentic workflow that turns ambiguous e
 
 **Technical Highlights**  
 - Alibaba Cloud Function Compute custom container backend with explicit `/api/health` deployment proof.
+- Docker image build plus container smoke path through `npm run deploy:preflight -- -BuildImage -SmokeContainer`.
 - Deterministic fallback mode when Qwen Cloud is unavailable.
 - Frontend dashboard with run history, risk checkpoints, and artifact generation.
 - Evidence artifacts: patch intent, remediation plan, verification evidence, and deployment proof.

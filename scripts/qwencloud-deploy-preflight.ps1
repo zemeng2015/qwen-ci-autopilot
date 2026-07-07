@@ -3,7 +3,10 @@ param(
     [string]$ProjectRoot = (Get-Location).Path,
     [Parameter(Mandatory = $false)]
     [string]$ImageTag = "qwen-ci-autopilot:local",
-    [switch]$BuildImage
+    [switch]$BuildImage,
+    [switch]$SmokeContainer,
+    [Parameter(Mandatory = $false)]
+    [int]$SmokePort = 8788
 )
 
 $ErrorActionPreference = "Stop"
@@ -44,8 +47,10 @@ try {
     $dockerDaemonOk = $false
     if ($hasDocker) {
         try {
-            & docker info *> $null
-            $dockerDaemonOk = $LASTEXITCODE -eq 0
+            $dockerStdout = Join-Path $artifactDir "docker-info-$timestamp.out"
+            $dockerStderr = Join-Path $artifactDir "docker-info-$timestamp.err"
+            $dockerInfo = Start-Process -FilePath "docker" -ArgumentList "info" -NoNewWindow -Wait -PassThru -RedirectStandardOutput $dockerStdout -RedirectStandardError $dockerStderr
+            $dockerDaemonOk = $dockerInfo.ExitCode -eq 0
         }
         catch {
             $dockerDaemonOk = $false
@@ -97,6 +102,47 @@ try {
     else {
         Add-Check -name "docker.build" -ok $true -details "Skipped. Re-run with -BuildImage to test container build." -required $false
     }
+
+    if ($SmokeContainer) {
+        $containerName = "qwen-ci-autopilot-smoke"
+        $smokeOk = $false
+        if ($hasDocker -and $dockerDaemonOk) {
+            try {
+                try {
+                    & docker rm -f $containerName 2>$null | Out-Null
+                }
+                catch {
+                    # Ignore missing previous smoke container.
+                }
+                & docker run --rm -d -p "$($SmokePort):8787" --name $containerName $ImageTag | Out-Null
+                $deadline = (Get-Date).AddSeconds(45)
+                do {
+                    try {
+                        $health = Invoke-RestMethod -Uri "http://127.0.0.1:$SmokePort/api/health" -TimeoutSec 5
+                        if ($health.ok -and $health.proofFile -eq "deploy/alibaba/serverless-devs.yaml") {
+                            $smokeOk = $true
+                            break
+                        }
+                    }
+                    catch {
+                        Start-Sleep -Seconds 2
+                    }
+                } while ((Get-Date) -lt $deadline)
+            }
+            finally {
+                try {
+                    & docker stop $containerName 2>$null | Out-Null
+                }
+                catch {
+                    # Ignore containers that exited before cleanup.
+                }
+            }
+        }
+        Add-Check -name "docker.smoke_container" -ok $smokeOk -details "GET http://127.0.0.1:$SmokePort/api/health from $ImageTag"
+    }
+    else {
+        Add-Check -name "docker.smoke_container" -ok $true -details "Skipped. Re-run with -SmokeContainer to test runtime health." -required $false
+    }
 }
 finally {
     Set-Location $existing
@@ -107,6 +153,7 @@ $result = [ordered]@{
     projectRoot = $ProjectRoot
     readyForDeploy = $ready
     buildImage = [bool]$BuildImage
+    smokeContainer = [bool]$SmokeContainer
     imageTag = $ImageTag
     checks = $checks
 }
@@ -118,6 +165,7 @@ $mdLines = @(
     "",
     "- Ready for deploy: $ready",
     "- Docker build requested: $([bool]$BuildImage)",
+    "- Container smoke requested: $([bool]$SmokeContainer)",
     "- Image tag: $ImageTag",
     "",
     "## Checks",
@@ -141,6 +189,7 @@ $mdLines += @(
     '$env:ALIBABA_CLOUD_REGION="us-east-1"',
     '$env:ALIBABA_CLOUD_SERVICE="qwen-ci-autopilot-api"',
     '$env:ACR_IMAGE="registry-intl.us-east-1.aliyuncs.com/<namespace>/qwen-ci-autopilot:latest"',
+    "npm run deploy:preflight -- -BuildImage -SmokeContainer -ImageTag qwen-ci-autopilot:local",
     "docker build -t qwen-ci-autopilot:latest .",
     '# docker tag/push to $env:ACR_IMAGE after logging into Alibaba Cloud Container Registry',
     "cd deploy/alibaba",

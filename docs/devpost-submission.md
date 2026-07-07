@@ -111,6 +111,21 @@ https://github.com/zemeng2015/qwen-ci-autopilot
 
 https://github.com/zemeng2015/qwen-ci-autopilot/actions/workflows/ci.yml
 
+## Container Deployment Smoke
+
+Local container build and runtime health check:
+
+```powershell
+npm run deploy:preflight -- -BuildImage -SmokeContainer -ImageTag qwen-ci-autopilot:local
+```
+
+Expected Docker-specific checks:
+
+- `tool.docker`: PASS
+- `tool.docker_daemon`: PASS
+- `docker.build`: PASS
+- `docker.smoke_container`: PASS
+
 ## Ready-to-run one-liner
 
 Before final submit, generate everything you need to paste into Devpost:

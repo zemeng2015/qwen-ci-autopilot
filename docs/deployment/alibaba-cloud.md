@@ -20,7 +20,7 @@ npm run deploy:preflight
 To also verify the local Docker image build path:
 
 ```powershell
-npm run deploy:preflight -- -BuildImage -ImageTag qwen-ci-autopilot:local
+npm run deploy:preflight -- -BuildImage -SmokeContainer -ImageTag qwen-ci-autopilot:local
 ```
 
 ```powershell

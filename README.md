@@ -140,7 +140,7 @@ npm run deploy:preflight
 Use this before a real deployment:
 
 ```powershell
-npm run deploy:preflight -- -BuildImage -ImageTag qwen-ci-autopilot:local
+npm run deploy:preflight -- -BuildImage -SmokeContainer -ImageTag qwen-ci-autopilot:local
 ```
 
 After deployment, record a short proof clip that shows:
