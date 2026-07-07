@@ -38,6 +38,7 @@ Set-Location $ProjectRoot
 try {
     Add-Check -name "file.Dockerfile" -ok (Test-Path "Dockerfile") -details "Dockerfile"
     Add-Check -name "file.serverless_devs" -ok (Test-Path "deploy/alibaba/serverless-devs.yaml") -details "deploy/alibaba/serverless-devs.yaml"
+
     $hasDocker = Has-Command "docker"
     Add-Check -name "tool.docker" -ok $hasDocker -details "docker CLI"
     $dockerDaemonOk = $false
@@ -54,9 +55,24 @@ try {
     else {
         Add-Check -name "tool.docker_daemon" -ok $false -details "Docker CLI is unavailable."
     }
-    Add-Check -name "tool.serverless_devs_s" -ok (Has-Command "s") -details "Install with: npm install -g @serverless-devs/s"
-    Add-Check -name "tool.aliyun_cli" -ok (Has-Command "aliyun") -details "Optional helper CLI; Serverless Devs can deploy without this." -required $false
 
+    $hasServerlessDevs = Has-Command "s"
+    Add-Check -name "tool.serverless_devs_s" -ok $hasServerlessDevs -details "Install with: npm install -g @serverless-devs/s"
+    if ($hasServerlessDevs) {
+        try {
+            $sConfig = (& s config get -a default 2>&1) -join "`n"
+            $hasDefaultAccess = $sConfig -notmatch "not yet|not found|not.*configured"
+            Add-Check -name "tool.serverless_devs_default_access" -ok $hasDefaultAccess -details "Required because deploy/alibaba/serverless-devs.yaml uses access: default."
+        }
+        catch {
+            Add-Check -name "tool.serverless_devs_default_access" -ok $false -details "Run: s config add"
+        }
+    }
+    else {
+        Add-Check -name "tool.serverless_devs_default_access" -ok $false -details "Install Serverless Devs, then run: s config add"
+    }
+
+    Add-Check -name "tool.aliyun_cli" -ok (Has-Command "aliyun") -details "Optional helper CLI; Serverless Devs can deploy without this." -required $false
     Add-Check -name "env.DASHSCOPE_API_KEY" -ok ([bool]$env:DASHSCOPE_API_KEY) -details "Required for live Qwen Cloud calls on deployed backend."
     Add-Check -name "env.ALIBABA_CLOUD_REGION" -ok ([bool]$env:ALIBABA_CLOUD_REGION) -details "Example: us-east-1"
     Add-Check -name "env.ALIBABA_CLOUD_SERVICE" -ok ([bool]$env:ALIBABA_CLOUD_SERVICE) -details "Example: qwen-ci-autopilot-api"
@@ -120,6 +136,7 @@ $mdLines += @(
     "",
     '```powershell',
     'npm install -g @serverless-devs/s',
+    's config add',
     '$env:DASHSCOPE_API_KEY="sk-..."',
     '$env:ALIBABA_CLOUD_REGION="us-east-1"',
     '$env:ALIBABA_CLOUD_SERVICE="qwen-ci-autopilot-api"',
